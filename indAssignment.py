@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from datetime import datetime as dt
 
 
+
 usagers = pd.read_csv('usagers-2020.csv', sep=';')
 
 #print(usagers)
@@ -87,9 +88,6 @@ axs[1].bar(ageMort_prct.keys(),         ageMort_prct.values(),       color='red'
 plt.show()
 
 
-#https://python-visualization.github.io/folium/quickstart.html
-
-
 
 ####################################################################
 ################ Repartition mois, jour, heure, etc ################
@@ -123,3 +121,21 @@ axs2[1].bar(repartitionJ.keys(),    repartitionJ.values(),  color='orange')
 axs2[2].bar(repartitionH.keys(),    repartitionH.values(),  color='orange')
 
 plt.show()
+
+
+
+####################################################################
+##################### Repartition geographique #####################
+####################################################################
+
+
+print(caracteristiques)
+
+import plotly.express as px 
+
+figMap = px.scatter_geo(caracteristiques, lat = 'lat', lon = 'long', scope = 'europe', opacity=0.4)
+print(figMap)
+figMap.update_traces(marker=dict(size=50))
+figMap.show()
+
+
