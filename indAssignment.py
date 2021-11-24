@@ -85,7 +85,7 @@ axs[1].bar(ageAccidenté_prct.keys(),    ageAccidenté_prct.values(),  color='or
 axs[1].bar(ageMort_prct.keys(),         ageMort_prct.values(),       color='red')
 
 
-plt.show()
+#plt.show()
 
 
 
@@ -120,7 +120,7 @@ axs2[0].bar(repartitionM.keys(),    repartitionM.values(),  color='orange')
 axs2[1].bar(repartitionJ.keys(),    repartitionJ.values(),  color='orange')
 axs2[2].bar(repartitionH.keys(),    repartitionH.values(),  color='orange')
 
-plt.show()
+#plt.show()
 
 
 
@@ -133,9 +133,14 @@ print(caracteristiques)
 
 import plotly.express as px 
 
-figMap = px.scatter_geo(caracteristiques, lat = 'lat', lon = 'long', scope = 'europe', opacity=0.4)
-print(figMap)
-figMap.update_traces(marker=dict(size=50))
-figMap.show()
+#figMap = px.scatter_geo(caracteristiques, lat = 'lat', lon = 'long', scope = 'europe', opacity=0.1, center = {'lat':46.868376, 'lon':2.725796}, projection='eckert4')
+#print(figMap)
+#figMap.update_traces(marker=dict(size=5))
+#figMap.show()
 
-
+figMap2 = px.scatter_mapbox(caracteristiques, lat="lat", lon="long", opacity=0.15,
+                        color_discrete_sequence=["red"], zoom=3)
+figMap2.update_layout(mapbox_style="open-street-map")
+figMap2.update_traces(marker=dict(size=4))
+figMap2.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+figMap2.show()
