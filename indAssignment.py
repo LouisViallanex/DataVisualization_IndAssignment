@@ -84,10 +84,14 @@ axs[0].bar(ageMort.keys(),         ageMort.values(),       color='red')
 axs[1].bar(ageAccidenté_prct.keys(),    ageAccidenté_prct.values(),  color='orange')
 axs[1].bar(ageMort_prct.keys(),         ageMort_prct.values(),       color='red')
 
+plt.show()
 
-#plt.show()
 
-
+fig3, ax3 = plt.subplots()
+ax3.bar(ageAccidenté.keys(),    ageAccidenté.values(),  color='orange')
+fig4, ax4 = plt.subplots()
+ax4.bar(ageMort.keys(),         ageMort.values(),       color='red')
+plt.show()
 
 ####################################################################
 ################ Repartition mois, jour, heure, etc ################
@@ -111,16 +115,16 @@ for index, row in caracteristiques.iterrows():
     repartitionJ[row['jour']] += 1                      # Total accidentés par jour
 
 for index, row in caracteristiques.iterrows():
-    repartitionH[int(row['hrmn'][:2])] += 1                  # Total accidentés par heure
+    repartitionH[int(row['hrmn'][:2])] += 1             # Total accidentés par heure
 
 #print(repartitionM)
 
-fig2, axs2 = plt.subplots(ncols=3)
+fig2, axs2 = plt.subplots(ncols=2)
 axs2[0].bar(repartitionM.keys(),    repartitionM.values(),  color='orange')
-axs2[1].bar(repartitionJ.keys(),    repartitionJ.values(),  color='orange')
-axs2[2].bar(repartitionH.keys(),    repartitionH.values(),  color='orange')
+#axs2[1].bar(repartitionJ.keys(),    repartitionJ.values(),  color='orange')
+axs2[1].bar(repartitionH.keys(),    repartitionH.values(),  color='orange')
 
-#plt.show()
+plt.show()
 
 
 
@@ -129,7 +133,7 @@ axs2[2].bar(repartitionH.keys(),    repartitionH.values(),  color='orange')
 ####################################################################
 
 
-print(caracteristiques)
+#print(caracteristiques)
 
 import plotly.express as px 
 
@@ -139,8 +143,30 @@ import plotly.express as px
 #figMap.show()
 
 figMap2 = px.scatter_mapbox(caracteristiques, lat="lat", lon="long", opacity=0.15,
-                        color_discrete_sequence=["red"], zoom=3)
+                        color_discrete_sequence=["red"], zoom=4)
 figMap2.update_layout(mapbox_style="open-street-map")
 figMap2.update_traces(marker=dict(size=4))
 figMap2.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 figMap2.show()
+
+
+#caracteristiques_AccMortel = caracteristiques.copy()
+
+
+#for index, row in caracteristiques_AccMortel.iterrows():
+#    if row['Num_Acc'] not in usagers_decede['Num_Acc'].unique():
+#       caracteristiques_AccMortel.drop(index, inplace=True)
+
+
+
+#print(caracteristiques_AccMortel)
+
+
+#figMap3 = px.scatter_mapbox(caracteristiques_AccMortel, lat="lat", lon="long", opacity=0.15,
+#                        color_discrete_sequence=["red"], zoom=3)
+#figMap3.update_layout(mapbox_style="open-street-map")
+#figMap3.update_traces(marker=dict(size=4))
+#figMap3.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+#figMap3.show()
+
+# figMap3 représente la carte avec les accidents mortels cette fois ci, mais pas de différence flagrante quant à la répartion de ceux ci.
