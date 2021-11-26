@@ -4,6 +4,8 @@ from pandas_datareader import data as pdr
 import matplotlib.pyplot as plt
 from datetime import datetime as dt
 
+plt.rc('axes',edgecolor='w')
+
 
 
 usagers = pd.read_csv('usagers-2020.csv', sep=';')
@@ -22,6 +24,18 @@ for index, row in usagers.iterrows():
 # Pourcentage des conducteurs impliqués dans un accident
 print("% Hommes: ", 100*conducteurs['1']/sum(conducteurs.values()), " - % Femmes: ", 100*conducteurs['2']/sum(conducteurs.values()))
 
+figFM, axFM = plt.subplots()
+axFM.pie([100*conducteurs['1']/sum(conducteurs.values()), 100*conducteurs['2']/sum(conducteurs.values())], colors=['#0984e3','#ff7675'], labels=['♂','♀'], wedgeprops = { 'linewidth' : 7, 'edgecolor' : '#383838' }, textprops={'color':"w"})
+
+# Create a circle at the center of the plot
+my_circle = plt.Circle( (0,0), 0.7, color='#383838')
+p = plt.gcf()
+p.gca().add_artist(my_circle)
+axFM.set_title('Proportion of drivers by gender (2020)', color='white')
+figFM.patch.set_facecolor('#383838')
+       
+
+plt.show()
 
 print("% pers mortes : ", 100 * sum(usagers['grav'] == 2) / len(usagers)) # Pourcentage des personnes impliquées dans un accident qui sont mortes
 
@@ -72,12 +86,12 @@ for i in ageMort.keys():
 
 #print(ageAccidenté)
 
-fig, axs = plt.subplots(ncols=2)
+#fig, axs = plt.subplots(ncols=2)
 #ax.bar(ageAccidenté.keys(), ageAccidenté.values())
 #plt.show()
 
 #ax.bar(ageMort.keys(), ageMort.values())
-
+"""
 axs[0].bar(ageAccidenté.keys(),    ageAccidenté.values(),  color='orange')
 axs[0].bar(ageMort.keys(),         ageMort.values(),       color='red')
 
@@ -85,12 +99,26 @@ axs[1].bar(ageAccidenté_prct.keys(),    ageAccidenté_prct.values(),  color='or
 axs[1].bar(ageMort_prct.keys(),         ageMort_prct.values(),       color='red')
 
 plt.show()
-
+"""
 
 fig3, ax3 = plt.subplots()
-ax3.bar(ageAccidenté.keys(),    ageAccidenté.values(),  color='orange')
+ax3.bar(ageAccidenté.keys(),    ageAccidenté.values(),  color='#d63031')
+ax3.set_xlim(-5, 105)
+ax3.set_title("Age distribution of accident victims (2020)", color="white")
+ax3.set_xlabel('Age')
+ax3.set_ylabel('Numbers of accidents')
+ax3.set_facecolor('#383838')
+fig3.patch.set_facecolor('#383838')
+ax3.xaxis.label.set_color('w')   
+ax3.yaxis.label.set_color('w')         
+ax3.tick_params(axis='x', colors='w')   
+ax3.tick_params(axis='y', colors='w')
+
+"""
 fig4, ax4 = plt.subplots()
 ax4.bar(ageMort.keys(),         ageMort.values(),       color='red')
+"""
+
 plt.show()
 
 ####################################################################
@@ -120,9 +148,34 @@ for index, row in caracteristiques.iterrows():
 #print(repartitionM)
 
 fig2, axs2 = plt.subplots(ncols=2)
-axs2[0].bar(repartitionM.keys(),    repartitionM.values(),  color='orange')
+axs2[0].bar(repartitionM.keys(),    repartitionM.values(),  color='#d63031')
 #axs2[1].bar(repartitionJ.keys(),    repartitionJ.values(),  color='orange')
-axs2[1].bar(repartitionH.keys(),    repartitionH.values(),  color='orange')
+axs2[1].bar(repartitionH.keys(),    repartitionH.values(),  color='#d63031')
+
+
+axs2[0].set_title("Monthly distribution of accidents (2020)", color="white")
+axs2[1].set_title("Hourly distribution of accidents (2020)", color="white")
+
+axs2[0].set_xlabel('Month')
+axs2[0].set_ylabel('Number of accidents')
+
+axs2[1].set_xlabel('Hour')
+axs2[1].set_ylabel('Number of accidents')
+
+axs2[1].set_facecolor('#383838')
+fig2.patch.set_facecolor('#383838')
+axs2[1].xaxis.label.set_color('w')   
+axs2[1].yaxis.label.set_color('w')         
+axs2[1].tick_params(axis='x', colors='w')   
+axs2[1].tick_params(axis='y', colors='w')
+axs2[1].set_xticks(np.arange(0, 24, 2))
+
+axs2[0].set_facecolor('#383838')
+axs2[0].xaxis.label.set_color('w')   
+axs2[0].yaxis.label.set_color('w')         
+axs2[0].tick_params(axis='x', colors='w')   
+axs2[0].tick_params(axis='y', colors='w')
+axs2[0].set_xticks(np.arange(0, 13, 1))
 
 plt.show()
 
