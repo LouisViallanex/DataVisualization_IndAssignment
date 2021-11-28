@@ -19,6 +19,18 @@
   h2, h3{
     color: white !important;
   }
+  .brk{
+    display: block;
+    width: 80%;
+    border: 1px solid #7a7a7a;
+    margin: 5px auto;
+  }
+  p{
+    text-align: justify;
+  }
+  a{
+    color: #b6c6ff;
+  }
 
 </style>
 
@@ -60,7 +72,7 @@
               <span class="icon">
                 <i class="fas fa-chart-area"></i>
               </span>
-              <span>Visualization 1</span>
+              <span>Visualizations</span>
             </a>
           </div>
 
@@ -83,27 +95,50 @@
   <section class="section">
     <div class="container content">
       <!-- modify if necessary (move visualizations in separate pages) -->
-      <h2 id="viz1">Road accident report in 2020 in France 1</h2>
+      <h2 id="viz1" style="text-align: center;">Road accidents* report in 2020 in France</h2>
 
       <div class="visualizations">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 50% 50%; gap: 0px 0px; grid-template-areas: 'img1 img2' 'img1 txt';">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 50% 50%; gap: 0px 0px; grid-template-areas: 'img1 img2' 'img1 txt'; margin-bottom: 25px;">
           <img src="accidentsLocalisation.png" style="grid-area: img1;">
           <img src="prpOfDrivers.png" style="grid-area: img2; height: 100%; margin-left: auto; margin-right: auto; display: block;">
           <div style="margin:auto">
             <i class="fas fa-car-crash" style="font-size: 65px;"></i>
             <i class="fas fa-skull" style="font-size: 40px; left: -32px; color: #383838; bottom: -10px; position: relative; transform: rotate(-20deg);"></i>
-            <span style="font-size: 25px; font-weight: bold;">5.4% of accidents are fatal</span>
+            <span style="font-size: 25px; font-weight: bold;">5.49% of accidents were fatal</span>
           </div>
         </div>
+        <div class="brk"></div>
         <img src="ageDistribution.png" style="width: 80%; margin: auto; display: block;">
+        <div class="brk"></div>
         <img src="monthHourDistribution.png" style="width: 80%; margin: auto; display: block;">
+        <div class="brk"></div>
       </div>
 
 
       <h3>Interpretation</h3>
 
       <p>
-        Provide a brief discussion of how to interpret this visualization. Legends provided with the visualization can be self-explanatory, keep it short.
+        *bodily accident involving at least one victim, a vehicle and occurring on a road open to public traffic. <br><br>
+
+        ➔ The first figure represents a map of France with all road accidents* in 2020. We can see that it is the areas with a high population density and therefore
+         high traffic that have the most accidents. I also made the same representation with fatal accidents to see if we could conclude that they were more present 
+         on highways and isolated roads but no concrete conclusion was obvious. <br><br>
+
+        ➔ The pie chart represents the proportion of drivers involved in an accident (but not their responsibility). 75% are men and 25% are women. <br><br>
+
+        ➔ 5.49% of road accidents in France in 2020 were fatal for at least one of the victims involved. <br><br>
+
+        ➔ The first graph represents the distribution of people involved in a road accident according to their age. It is difficult to draw conclusions from this graph
+         since it would have to be related to the distribution of all drivers by age. In addition, I also produced this same graph for deceased people (and not only accidents),
+          the distribution is more random and not necessarily interesting. <br><br>
+
+        ➔ The second graph represents the distribution of the number of accidents during the months of the year 2020. We can easily observe a considerable drop during March,
+         April, May and November, in particular April. This is explained by the two confinements in France (March 17, 2020 to May 11, 2020 and October 30, 2020 to December 15,
+          2020), with the first confinement even stricter than the second and therefore much fewer people on the roads. <br><br>
+
+        ➔ Finally the last graph represents the distribution of accidents during the day. The most important part is concentrated between 7 a.m. and 9 p.m. given that there
+         are the most people on the road, and in particular in the late afternoon with the return from work and the accumulated fatigue of the day.
+
       </p>
 
       <h3>Discussion</h3>
@@ -115,7 +150,11 @@
       <h3>Sources</h3>
 
       <p>
-        Provide sources for the dataset, any code used, and design inspirations here. Dishonesty will result in a 0 for the assignment or the <strong>entire course</strong>.
+        For this data visualization work I used the official 
+        <a href="https://www.data.gouv.fr/en/datasets/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2020/">personal accident data</a>
+         available on data.gouv. I used in particular the tables <a href="https://www.data.gouv.fr/fr/datasets/r/78c45763-d170-4d51-a881-e3147802d7ee">"usagers-2020.csv"</a> and
+         <a href="https://www.data.gouv.fr/fr/datasets/r/07a88205-83c1-4123-a993-cba5331e8ae0">"caracteritiques-2020.csv"</a>, you can also find these tables, their documentation 
+         and my code for the visualizations on my <a href="https://github.com/LouisViallanex/DataVisualization_IndAssignment">GitHub</a>.
       </p>
     </div>
   </section>
@@ -134,7 +173,7 @@
         <div class="media-left">
           <p class="image is-128x128">
             <!-- replace with your profile image -->
-            <img src="https://bulma.io/images/placeholders/128x128.png">
+            <img src="https://media-exp1.licdn.com/dms/image/C5603AQERDMgHyzqexg/profile-displayphoto-shrink_100_100/0/1517252298645?e=1643241600&v=beta&t=EqaWoe3eyB1fLvH36_o3UQj-4Ghh0H4ccxSOJw0WAGU">
           </p>
         </div>
 
@@ -146,7 +185,7 @@
               Brief biography describing your interests and skills, a profile photo, and/or links to your Github, Linkedin, and other <strong>professional</strong> social media accounts.
               <br/>
               <!-- find brand icons at: https://fontawesome.com/icons?d=gallery&s=brands&m=free -->
-              <a href="https://github.com/">
+              <a href="https://github.com/LouisViallanex/DataVisualization_IndAssignment">
                 <span class="fab fa-github"></span>
                 <span>Github</span>
               </a>
